@@ -39,6 +39,8 @@ Domain Path: /languages
 		
 		wp_enqueue_style( 'blog-plugin-css', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/pegasus-blog.css', array(), null, 'all' );
 		
+		wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
+		
 	}
 	add_action( 'wp_enqueue_scripts', 'pegasus_blog_plugin_styles' );
 	
