@@ -22,10 +22,10 @@ Domain Path: /languages
 	    <div class="wrap pegasus-wrap">
 	    <h1>Blog Usage</h1>
 		
-		<!--<p>Callout Usage 1: <pre>[callout button="yes" link="http://example.com" external="yes" color="white" link_text="Learn More" background="http://www.wpfreeware.com/themes/html/appstation/img/download_bg.png"] <?php echo htmlspecialchars('<p>Get your copy now!Suspendisse vitae bibendum mauris. Nunc iaculis nisl vitae laoreet elementum donec dignissim metus sit.</p'); ?>[/callout]</pre></p>
-		<p>Callout Usage 2: <pre>[callout button="yes" link="http://example.com" color="black" external="yes" backgroundcolor="#dedede"] <?php echo htmlspecialchars('<h2>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</h2>'); ?>[/callout]</pre></p>
+		<!--<p>Callout Usage 1: <pre>[callout button="yes" link="http://example.com" external="yes" color="white" link_text="Learn More" background="http://www.wpfreeware.com/themes/html/appstation/img/download_bg.png"] <?php //echo htmlspecialchars('<p>Get your copy now!Suspendisse vitae bibendum mauris. Nunc iaculis nisl vitae laoreet elementum donec dignissim metus sit.</p'); ?>[/callout]</pre></p>
+		<p>Callout Usage 2: <pre>[callout button="yes" link="http://example.com" color="black" external="yes" backgroundcolor="#dedede"] <?php //echo htmlspecialchars('<h2>Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec sollicitudin molestie malesuada. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</h2>'); ?>[/callout]</pre></p>
 			
-		<p style="color:red;">MAKE SURE YOU DO NOT HAVE ANY RETURNS OR <?php echo htmlspecialchars('<br>'); ?>'s IN YOUR SHORTCODES, OTHERWISE IT WILL NOT WORK CORRECTLY</p>
+		<p style="color:red;">MAKE SURE YOU DO NOT HAVE ANY RETURNS OR <?php //echo htmlspecialchars('<br>'); ?>'s IN YOUR SHORTCODES, OTHERWISE IT WILL NOT WORK CORRECTLY</p>
 		-->
 		
 		</div>
