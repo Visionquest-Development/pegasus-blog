@@ -2,8 +2,11 @@
 Ever need a way to show blogs posts in your theme? This will allow you to have a customizable grid/list view for your blogs posts with pagination and great category implementation with just a simple shortcode.
 
 ## Usage
-How to use in your WordPress site
-`[blog]`
+How to use in your WordPress site<br>
+`[blog]`<br>
+Or<br>
+`[blog color="#dedede" background="#777" border="yes" border_radius="10px" pagination="yes" category="uncategorized" tag="2017" ]`<br>
+Shortcode Attributes: http://pegasustheme.com/pegasus-blog
 
 
 ## Installation
