@@ -36,10 +36,10 @@ Domain Path: /languages
 	* Proper way to enqueue CSS
 	*/
 	function pegasus_blog_plugin_styles() {
-		
-		wp_enqueue_style( 'blog-plugin-css', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/pegasus-blog.css', array(), null, 'all' );
-		
-		wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
+
+		wp_register_style( 'blog-plugin-css', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'css/pegasus-blog.css', array(), null, 'all' );
+
+		//wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
 		
 	}
 	add_action( 'wp_enqueue_scripts', 'pegasus_blog_plugin_styles' );
@@ -48,9 +48,9 @@ Domain Path: /languages
 	* Proper way to enqueue JS 
 	*/
 	function pegasus_blog_plugin_js() {
-		
-		wp_enqueue_script( 'classie-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/classie.js', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'pegasus-blog-plugin-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/plugin.js', array( 'jquery' ), null, true );
+
+		wp_register_script( 'classie-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/classie.js', array( 'jquery' ), null, 'all' );
+		wp_register_script( 'pegasus-blog-plugin-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/plugin.js', array( 'jquery' ), null, 'all' );
 		
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_blog_plugin_js' );
@@ -155,7 +155,7 @@ Domain Path: /languages
 			$output .= '<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>';
 			$output .= '<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>';
 			$output .= '</div>';
-			$output .= '<ul id="octane-blog-list" >';
+			$output .= '<ul id="blog-list" >';
 
 			//$query2 = new WP_Query( array( 'post_type' => array( 'post' ) ) );
 			//while ( $query2->have_posts() ) : $query2->the_post();
@@ -166,7 +166,7 @@ Domain Path: /languages
 			$output .= '<!-- output the thumbnail -->';
 			if ( has_post_thumbnail() ) {
 				$output .= '<a class="cbp-vm-image" href="' . $temp_link . '">';
-				//$output = the_post_thumbnail ( 'medium', array ('class' => 'octane-blog-thumbnail ') );
+				//$output = the_post_thumbnail ( 'medium', array ('class' => 'blog-thumbnail ') );
 				$output .= '</a>';
 			}else{
 				$output .= '<a  class="cbp-vm-image" href="' . $temp_link . '">';
@@ -184,7 +184,7 @@ Domain Path: /languages
 			$output .= '<div class="cbp-vm-price"><i>' . strtolower( $tax ) . ' ' . strtolower( $taxtwo ) . '</i></div>';
 
 			$output .= '<!-- output the excerpt, and if no excerpt then output content-->';
-			$output .= '<div class="octane-blog-content cbp-vm-details">
+			$output .= '<div class="blog-content cbp-vm-details">
 								<p>thecontent</p>
 							</div>';
 			$output .= '<!-- output a read more button -->';
@@ -205,11 +205,9 @@ Domain Path: /languages
 
 		wp_reset_query();
 
-		//wp_enqueue_style( 'slick-css' );
-		//wp_enqueue_style( 'slick-theme-css' );
-		//wp_enqueue_script( 'slick-js' );
-		//wp_enqueue_script( 'match-height-js' );
-		//wp_enqueue_script( 'pegasus-carousel-plugin-js' );
+		wp_enqueue_style( 'blog-plugin-css' );
+		wp_enqueue_script( 'classie-js' );
+		wp_enqueue_script( 'pegasus-blog-plugin-js' );
 
 		return $output;
 
