@@ -1,0 +1,16 @@
+{
+  "rows": [
+    {
+      "section_name": "Blog Settings",
+      "rows": [
+        {
+          "name": "Color",
+          "attribute": "color",
+          "options": "Your Color",
+          "description": "The color of the border and the icons",
+          "example": "color=\"#666666\""
+        }
+      ]
+    }
+  ]
+}

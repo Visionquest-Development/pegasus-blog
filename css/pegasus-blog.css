@@ -1,228 +1,290 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~BLOG PAGE~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-		#blog-categories { margin: 10px 0 20px; padding: 0; list-style-type: none; }
-		#blog-categories li { display: inline-block; margin: 10px 0; }
-		#blog-categories li a  { 
-			color: #231e61;
-			border: 3px solid #231e61;
-			border-radius: 7px;
-			padding: 5px 10px;
-			font-weight: bold;
-		}	
-	
-		/* Main container */
-		.cbp-vm-switcher {
-			padding: 20px;
-			border: 3px solid #231e61;
-			margin-top: 20px;
-		}
 
-		/* options/select wrapper with switch anchors */
-		.cbp-vm-options {
-			text-align: right;
-			padding-bottom: 10px;
-			border-bottom: 3px solid #231e61;
-		}
+  :root {
+    --pegasus-blog-primary-color: #231e61;
+    --pegasus-blog-hover-color: #0b091d;
+    /* 5% lighter #0c0a22 */
+  }
 
-		.cbp-vm-options a {
-			display: inline-block;
-			width: 40px;
-			height: 40px;
-			overflow: hidden;
-			white-space: nowrap;
-			color: #d0d0d0;
-			margin: 2px;
-		}
+  #blog-categories li a,
+  .cbp-vm-options a:hover,
+  .cbp-vm-options a.cbp-vm-selected,
+  .cbp-vm-title {
+    color: var(--pegasus-blog-primary-color);
+  }
 
-		.cbp-vm-options a:hover,
-		.cbp-vm-options a.cbp-vm-selected {
-			color: #231e61;
-		}
+  #blog-categories li a,
+  .cbp-vm-switcher,
+  .cbp-vm-options  {
+    border: 3px solid var(--pegasus-blog-primary-color);
+  }
 
-		.cbp-vm-options a:before {
-			width: 40px;
-			height: 40px;
-			line-height: 40px;
-			font-size: 30px;
-			text-align: center;
-			display: inline-block;
-		}
+  .cbp-vm-options {
+    border-bottom: 3px solid var(--pegasus-blog-primary-color);
+  }
 
-		/* General style of switch items' list */
+  .cbp-vm-add {
+    background: var(--pegasus-blog-primary-color);
+  }
 
-		.cbp-vm-switcher ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
+  .cbp-vm-add:hover {
+    background: var(--pegasus-blog-hover-color);
+  }
 
-		/* Clear eventual floats */
-		.cbp-vm-switcher ul:before, 
-		.cbp-vm-switcher ul:after { 
-			content: " "; 
-			display: table; 
-		}
+  #blog-categories { margin: 10px 0 20px; padding: 0; list-style-type: none; }
+  #blog-categories li { display: inline-block; margin: 10px 0; }
+  #blog-categories li a  {
+    /* color: #231e61;
+    border: 3px solid #231e61; */
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-weight: bold;
+  }
 
-		.cbp-vm-switcher ul:after { 
-			clear: both; 
-		}
+  /* Main container */
+  .cbp-vm-switcher {
+    padding: 20px;
+    /* border: 3px solid #231e61; */
+    margin-top: 20px;
+  }
 
-		.cbp-vm-switcher ul li {
-			display: block;
-			position: relative;
-		}
+  /* options/select wrapper with switch anchors */
+  .cbp-vm-options {
+    text-align: right;
+    padding-bottom: 10px;
+    /* border-bottom: 3px solid #231e61; */
+  }
 
-		.cbp-vm-image {
-			display: block;
-			margin: 0 auto 10px;
-		}
+  .cbp-vm-options a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #d0d0d0;
+    margin: 2px;
+  }
 
-		.cbp-vm-image img {
-			display: inline-block;
-			max-width: 100%;
-			border: none;
-		}
+  /* .cbp-vm-options a:hover,
+  .cbp-vm-options a.cbp-vm-selected {
+    color: #231e61;
+  } */
 
-		.cbp-vm-title {
-			margin: 0;
-			padding: 0;
-			color: #231e61; 
-		}
+  .cbp-vm-options a:before {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    text-align: center;
+    display: inline-block;
+  }
 
-		.cbp-vm-price {
-			color: #c0c0c0 !important;
-			font-size: 18px; 
-		}
-		
-		.cbp-vm-price .post-categories { overflow: hidden; }
+  /* General style of switch items' list */
 
-		.cbp-vm-add {
-			color: #fff;
-			background: #231e61;
-			padding: 10px 20px;
-			border-radius: 2px;
-			margin: 20px 0 0;
-			/* width: 100%; */
-			display: inline-block;
-			transition: background 0.2s;
-		}
+  .cbp-vm-switcher ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-		.cbp-vm-add:hover {
-			color: #fff;
-			background: #02639d;
-		}
+  /* Clear eventual floats */
+  .cbp-vm-switcher ul:before,
+  .cbp-vm-switcher ul:after {
+    content: " ";
+    display: table;
+  }
 
-		.cbp-vm-add:before {
-			margin-right: 5px;
-		}
+  .cbp-vm-switcher ul:after {
+    clear: both;
+  }
 
-		/* Common icon styles */
-		.cbp-vm-icon:before {
-			font-family: 'fontawesome';
-			speak: none;
-			font-style: normal;
-			font-weight: normal;
-			font-variant: normal;
-			text-transform: none;
-			line-height: 1;
-			-webkit-font-smoothing: antialiased;
-		}
+  .cbp-vm-switcher ul li {
+    display: block;
+    position: relative;
+  }
 
-		.cbp-vm-grid:before {
-			content: "\f00a";
-		}
+  .cbp-vm-image {
+    display: block;
+    margin: 0 auto 10px;
+  }
 
-		.cbp-vm-list:before {
-			content: "\f00b";
-		}
+  .cbp-vm-image img {
+    display: inline-block;
+    max-width: 100%;
+    border: none;
+  }
 
-		.cbp-vm-add:before {
-			content: "\f055";
-		}
+  .cbp-vm-title {
+    margin: 0;
+    padding: 0;
+    /* color: #231e61; */
+  }
 
-		/* Individual view mode styles */
+  .cbp-vm-price {
+    color: #c0c0c0 !important;
+    font-size: 18px;
+  }
 
-		/* Large grid view */
-		.cbp-vm-view-grid ul {
-			text-align: center;
-		}
+  .cbp-vm-price .post-categories { overflow: hidden; }
 
-		.cbp-vm-view-grid ul .blog-item-container {
-			width: 33%;
-			text-align: center;
-			padding: 25px;
-			margin: 20px 0 0;
-			display: inline-block;
-			min-height: 420px;
-			vertical-align: top;
-		}
+  .cbp-vm-add {
+    color: #fff;
+    /* background: #231e61; */
+    padding: 10px 20px;
+    border-radius: 2px;
+    margin: 20px 0 0;
+    /* width: 100%; */
+    display: inline-block;
+    transition: background 0.2s;
+  }
 
-		.cbp-vm-view-grid .cbp-vm-title {
-			font-size: 2em;
-			
-			word-break: break-word;
-		}
+  .cbp-vm-add:hover {
+    color: #fff;
+    /* background: #02639d; */
+  }
 
-		.cbp-vm-view-grid .cbp-vm-details {
-			max-width: 300px;
-			min-height: 70px;
-			margin: 0 auto;
-		} 
+  .cbp-vm-add:before {
+    margin-right: 5px;
+  }
 
-		.cbp-vm-view-grid .cbp-vm-price {
-			margin: 10px 0;
-			font-size: 1.5em;
-		}
+  /* Common icon styles */
+  .cbp-vm-icon:before {
+    font-family: 'fontawesome';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cbp-vm-grid:before {
+    content: "\f00a";
+  }
+
+  .cbp-vm-list:before {
+    content: "\f00b";
+  }
+
+  .cbp-vm-add:before {
+    content: "\f055";
+  }
+
+  /* Individual view mode styles */
+
+  /* Large grid view */
+  .cbp-vm-view-grid ul {
+    text-align: center;
+  }
+
+  .cbp-vm-view-grid ul .blog-item-container {
+    width: 33%;
+    text-align: center;
+    padding: 25px;
+    margin: 20px 0 0;
+    display: inline-block;
+    min-height: 420px;
+    vertical-align: top;
+  }
+
+  .cbp-vm-view-grid .cbp-vm-title {
+    font-size: 2em;
+    word-break: break-word;
+  }
+
+  .cbp-vm-view-grid .cbp-vm-details {
+    max-width: 300px;
+    min-height: 70px;
+    margin: 0 auto;
+  }
+
+  .cbp-vm-view-grid .cbp-vm-price {
+    margin: 10px 0;
+    font-size: 1.5em;
+  }
 
 
-		/* List view */
-		.cbp-vm-view-list li {
-			/* padding: 20px 0; */
-			white-space: nowrap;
-		}
-		
-		.cbp-vm-view-list .blog-item-container { padding: 10px 0; } 
+  /* List view */
+  .cbp-vm-view-list li {
+    /* padding: 20px 0; */
+    white-space: nowrap;
+  }
+  .cbp-vm-view-list .blog-item-container { padding: 10px 0; }
 
-		.cbp-vm-view-list .cbp-vm-image,
-		.cbp-vm-view-list .cbp-vm-title,
-		.cbp-vm-view-list .cbp-vm-details,
-		.cbp-vm-view-list .cbp-vm-price,
-		.cbp-vm-view-list .cbp-vm-add {
-			display: inline-block;
-			vertical-align: middle;
-		}
+  .cbp-vm-view-list .cbp-vm-image,
+  .cbp-vm-view-list .cbp-vm-title,
+  .cbp-vm-view-list .cbp-vm-details,
+  .cbp-vm-view-list .cbp-vm-price,
+  .cbp-vm-view-list .cbp-vm-add {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-		.cbp-vm-view-list .cbp-vm-image {
-			width: 10%;
-		}
+  .cbp-vm-view-list .cbp-vm-image {
+    width: 10%;
+  }
 
-		.cbp-vm-view-list .cbp-vm-title {
-			font-size: 1.3em;
-			padding: 0 10px;
-			white-space: normal;
-			width: 23%;
-		}
+  .cbp-vm-view-list .cbp-vm-title {
+    font-size: 1.3em;
+    padding: 0 10px;
+    white-space: normal;
+    width: 23%;
+  }
 
-		.cbp-vm-view-list .cbp-vm-price {
-			font-size: 1.3em;
-			width: 10%;
-		}
-		
-		.cbp-vm-view-list .cbp-vm-price a { display: block;  }
+  .cbp-vm-view-list .cbp-vm-price {
+    font-size: 1.3em;
+    width: 10%;
+  }
 
-		.cbp-vm-view-list .cbp-vm-details {
-			width: 40%;
-			padding: 0 15px;
-			overflow: hidden;
-			white-space: normal;
-		}
+  .cbp-vm-view-list .cbp-vm-price a { display: block;  }
 
-		.cbp-vm-view-list .cbp-vm-add {
-			margin: 0;
-		}
+  .cbp-vm-view-list .cbp-vm-details {
+    width: 40%;
+    padding: 0 15px;
+    overflow: hidden;
+    white-space: normal;
+  }
 
-		.cbp-vm-image img { height: auto; }
-		
-		
+  .cbp-vm-view-list .cbp-vm-add {
+    margin: 0;
+  }
+
+  .cbp-vm-image img { height: auto; }
+
+/*
+  table.pegasus-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table.pegasus-table th {
+    background-color: #f1f1f1;
+    text-align: left;
+  }
+
+  table.pegasus-table th,
+  table.pegasus-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  table.pegasus-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  table.pegasus-table thead tr { background-color: #282828; }
+
+  table.pegasus-table thead tr td { padding: 10px; }
+
+  table.pegasus-table thead tr td span { color: white; }
+
+  table.pegasus-table tbody tr:nth-child(0) { background-color: #cccccc; }
+
+  table.pegasus-table tbody tr td { padding: 10px; }
+
+  table.pegasus-table code { color: #d63384;}
+  */
+
