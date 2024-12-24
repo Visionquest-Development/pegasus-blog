@@ -220,14 +220,17 @@ Domain Path: /languages
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_blog_plugin_js' );
 
-	function pegasus_blog_custom_css() {
-		global $pegasus_blogs_color;
-		if ($pegasus_blogs_color) {
-			echo '<style>:root { --pegasus-blog-custom-color: ' . esc_attr($pegasus_blogs_color) . '; }</style>';
-		}
+	function pegasus_blog_add_inline_script() {
+		$inline_script = 'var blogElement = document.getElementById("pegasus-blog");
+      if (blogElement) {
+        var blogColor = blogElement.getAttribute("data-pegasus-blog-color");
+        if (blogColor) {
+          document.documentElement.style.setProperty("--pegasus-blog-primary-color", blogColor);
+        }
+      }';
+		wp_add_inline_script('pegasus-blog-plugin-js', $inline_script);
 	}
-
-	add_action('wp_head', 'pegasus_blog_custom_css');
+	add_action('wp_enqueue_scripts', 'pegasus_blog_add_inline_script');
 
 	/*~~~~~~~~~~~~~~~~~~~~
 		BLOG
@@ -236,6 +239,7 @@ Domain Path: /languages
 	// [blog url="img-src"]
 	function pegasus_blog_func( $atts, $content = null ) {
 
+		//global $pegasus_blogs_color;
 		// $a = shortcode_atts( array(
 		// 	'link' => '#',
 		// ), $atts );
@@ -263,8 +267,8 @@ Domain Path: /languages
 			'posts_per_page' => -1, // Set the number of posts to retrieve
 			//'post_status' => 'publish', // Ensure only published posts are retrieved
 			//'category_name' => 'your-category-slug', // Optional: Filter by category
-			//'orderby' => 'date', // Optional: Order by date
-			//'order' => 'DESC' // Optional: Order descending
+			'orderby' => 'date', // Optional: Order by date
+			'order' => 'ASC' // Optional: Order descending
 		);
 
 		// echo '<pre>';
@@ -297,7 +301,6 @@ Domain Path: /languages
 		global $post;
 		//global $query_string;
 
-		global $pegasus_blogs_color;
 		//var_dump($color);
 		//var_dump($pegasus_blogs_color);
 	    $pegasus_blogs_color = isset($color) ? $color : '#000000';
@@ -353,7 +356,7 @@ Domain Path: /languages
 			// output all findings - CUSTOMIZE TO YOUR LIKING
 			$output = '';
 			//$output .= '<!--PEGASUS BLOG SYSTEM-->';
-			$output .= '<div id="pegasus-blog" class="pegasus-blog-switcher pegasus-blog-view-grid">';
+			$output .= '<div id="pegasus-blog" class="pegasus-blog-switcher pegasus-blog-view-grid" data-pegasus-blog-color="' . esc_attr($pegasus_blogs_color) . '">';
 			$output .= '<div class="pegasus-blog-options">';
 			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-grid pegasus-blog-selected" data-view="pegasus-blog-view-grid">Grid View</a>';
 			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-list" data-view="pegasus-blog-view-list">List View</a>';
@@ -434,3 +437,13 @@ Domain Path: /languages
 
 	}
 	add_shortcode( 'blog', 'pegasus_blog_func' );
+
+	// function pegasus_blog_custom_css() {
+	// 	global $pegasus_blogs_color;
+	// 	var_dump( $pegasus_blogs_color );
+	// 	if ($pegasus_blogs_color) {
+	// 		echo '<style>:root { --pegasus-blog-custom-color: ' . esc_attr($pegasus_blogs_color) . '; }</style>';
+	// 	}
+	// }
+
+	// add_action('wp_head', 'pegasus_blog_custom_css');

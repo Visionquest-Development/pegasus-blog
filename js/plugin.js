@@ -23,6 +23,16 @@
 				_switch( this );
 			}, false );
 		} );
+
+    // document.addEventListener("DOMContentLoaded", function() {
+    //   var blogElement = document.getElementById("pegasus-blog");
+    //   if (blogElement) {
+    //     var blogColor = blogElement.getAttribute("data-pegasus-blog-color");
+    //     if (blogColor) {
+    //       document.documentElement.style.setProperty("--pegasus-blog-primary-color", blogColor);
+    //     }
+    //   }
+    // });
 	}
 
 	function _switch( opt ) {

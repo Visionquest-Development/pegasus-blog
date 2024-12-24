@@ -3,8 +3,8 @@
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
   :root {
-    --pegasus-blog-primary-color: #231e61;
-    --pegasus-blog-hover-color: #0b091d;
+    --pegasus-blog-primary-color: #666666;
+    --pegasus-blog-hover-color: #222;
     /* 5% lighter #0c0a22 */
   }
 
@@ -182,10 +182,15 @@
   /* Large grid view */
   .pegasus-blog-view-grid ul {
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }
 
   .pegasus-blog-view-grid ul .blog-item-container {
-    width: 33%;
+    /* width: 33%; */
+    flex: 0 1 19%;
     text-align: center;
     padding: 25px;
     margin: 20px 0 0;
@@ -271,7 +276,7 @@
   }
 
 
-  @media only screen and (min-width: 500px) {
+  @media only screen and (max-width: 575px) {
     .pegasus-blog-switcher { padding: 10px; }
     .pegasus-blog-view-list .pegasus-blog-add {
       padding: 5px 8px;
