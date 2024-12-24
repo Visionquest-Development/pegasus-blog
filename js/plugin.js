@@ -1,5 +1,5 @@
 
-	
+
 
 /**
  * cbpViewModeSwitch.js v1.0.0
@@ -7,14 +7,14 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
- * Copyright 2013, Codrops
+ *
+ * Copyr ight 2013, Codrops
  * http://www.codrops.com
  */
 (function() {
 
-	var container = document.getElementById( 'cbp-vm' ),
-		optionSwitch = Array.prototype.slice.call( container.querySelectorAll( 'div.cbp-vm-options > a' ) );
+	var container = document.getElementById( 'pegasus-blog' ),
+		optionSwitch = Array.prototype.slice.call( container.querySelectorAll( 'div.pegasus-blog-options > a' ) );
 
 	function init() {
 		optionSwitch.forEach( function( el, i ) {
@@ -27,14 +27,14 @@
 
 	function _switch( opt ) {
 		// remove other view classes and any any selected option
-		optionSwitch.forEach(function(el) { 
-			classie.remove( container, el.getAttribute( 'data-view' ) );
-			classie.remove( el, 'cbp-vm-selected' );
+		optionSwitch.forEach(function(el) {
+			classie.remove( container , el.getAttribute( 'data-view' ) );
+			classie.remove( el, 'pegasus-blog-selected' );
 		});
 		// add the view class for this option
 		classie.add( container, opt.getAttribute( 'data-view' ) );
 		// this option stays selected
-		classie.add( opt, 'cbp-vm-selected' );
+		classie.add( opt, 'pegasus-blog-selected' );
 	}
 
 	init();

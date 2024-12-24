@@ -353,10 +353,10 @@ Domain Path: /languages
 			// output all findings - CUSTOMIZE TO YOUR LIKING
 			$output = '';
 			//$output .= '<!--PEGASUS BLOG SYSTEM-->';
-			$output .= '<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">';
-			$output .= '<div class="cbp-vm-options">';
-			$output .= '<a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>';
-			$output .= '<a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>';
+			$output .= '<div id="pegasus-blog" class="pegasus-blog-switcher pegasus-blog-view-grid">';
+			$output .= '<div class="pegasus-blog-options">';
+			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-grid pegasus-blog-selected" data-view="pegasus-blog-view-grid">Grid View</a>';
+			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-list" data-view="pegasus-blog-view-list">List View</a>';
 			$output .= '</div>';
 			$output .= '<ul id="blog-list" >';
 
@@ -378,26 +378,26 @@ Domain Path: /languages
 
 							$output .= '<!-- output the thumbnail -->';
 							if ( has_post_thumbnail() ) {
-								$output .= '<a class="cbp-vm-image" href="' . $post_link . '">';
+								$output .= '<a class="pegasus-blog-image" href="' . $post_link . '">';
 									//$output .= the_post_thumbnail ( 'medium', array ('class' => 'blog-thumbnail ') );
 									$output .= '<img src="' . esc_url($post_thumb) . '" alt="' . esc_attr($post_title) . '" class="blog-thumbnail">';
 								$output .= '</a>';
 							}else{
-								$output .= '<a  class="cbp-vm-image" href="' . $post_link . '">';
+								$output .= '<a  class="pegasus-blog-image" href="' . $post_link . '">';
 									$output .= '<img src="' . trailingslashit( plugin_dir_url( __FILE__ ) ) . '/images/not-available.png">';
 								$output .= '</a>';
 							}//end else and if
 
 							//$output .= '<!-- the permalink and title -->';
 							$output .= '<a href="' . $post_link . '" alt="' . $post_title . '">';
-								$output .= '<h3 class="cbp-vm-title">';
+								$output .= '<h3 class="pegasus-blog-title">';
 								$output .= $post_title;
 								$output .= '</h3> ';
 							$output .= '</a>';
 
-							//$output .= '<div class="cbp-vm-price"><i>' . strtolower( $tax ) . ' ' . strtolower( $taxtwo ) . '</i></div>';
-							if (!empty($categories)) {
-								$output .= '<div class="cbp-vm-price"><i>';
+							//$output .= '<div class="pegasus-blog-price"><i>' . strtolower( $tax ) . ' ' . strtolower( $taxtwo ) . '</i></div>';
+							if ( !empty($categories) ) {
+								$output .= '<div class="pegasus-blog-price"><i>';
 								foreach ($categories as $category) {
 									echo esc_html($category->name) . ' ';
 								}
@@ -405,12 +405,12 @@ Domain Path: /languages
 							}
 
 							//$output .= '<!-- output the excerpt, and if no excerpt then output content-->';
-							$output .= '<div class="blog-content cbp-vm-details">';
+							$output .= '<div class="blog-content pegasus-blog-details">';
 											$output .= '<p>thecontent</p>';
 										$output .= '</div>';
 
 							//$output .= '<!-- output a read more button -->';
-							$output .= '<a class="button cbp-vm-icon cbp-vm-add" href="' . $temp_link . '"> Read More </a>';
+							$output .= '<a class="button pegasus-blog-icon pegasus-blog-add" href="' . $temp_link . '"> Read More </a>';
 
 							//$output = '<div class="clearfix"></div>';
 						$output .= '</article>';
