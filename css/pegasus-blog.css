@@ -2,36 +2,6 @@
 	~~~~~~~~~BLOG PAGE~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-  :root {
-    --pegasus-blog-primary-color: #666666;
-    --pegasus-blog-hover-color: #222;
-    /* 5% lighter #0c0a22 */
-  }
-
-  #blog-categories li a,
-  .pegasus-blog-options a:hover,
-  .pegasus-blog-options a.pegasus-blog-selected,
-  .pegasus-blog-title {
-    color: var(--pegasus-blog-primary-color);
-  }
-
-  #blog-categories li a,
-  .pegasus-blog-switcher  {
-    border: 3px solid var(--pegasus-blog-primary-color);
-  }
-
-  .pegasus-blog-options {
-    border-bottom: 3px solid var(--pegasus-blog-primary-color);
-  }
-
-  .pegasus-blog-add {
-    background: var(--pegasus-blog-primary-color);
-  }
-
-  .pegasus-blog-add:hover {
-    background: var(--pegasus-blog-hover-color);
-  }
-
   #blog-list a {
     text-decoration: none;
 

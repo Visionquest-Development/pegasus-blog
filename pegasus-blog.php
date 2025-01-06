@@ -12,6 +12,7 @@ Text Domain: wporg
 Domain Path: /languages
 */
 
+
 	function blog_check_main_theme_name() {
 		$current_theme_slug = get_option('stylesheet'); // Slug of the current theme (child theme if used)
 		$parent_theme_slug = get_option('template');    // Slug of the parent theme (if a child theme is used)
@@ -215,22 +216,10 @@ Domain Path: /languages
 	function pegasus_blog_plugin_js() {
 
 		wp_register_script( 'classie-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/classie.js', array( 'jquery' ), null, 'all' );
-		wp_register_script( 'pegasus-blog-plugin-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/plugin.js', array( 'jquery' ), null, 'all' );
+		wp_register_script( 'pegasus-blog-plugin', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/pegasus-blog-plugin.js', array( 'jquery' ), null, 'all' );
 
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_blog_plugin_js' );
-
-	function pegasus_blog_add_inline_script() {
-		$inline_script = 'var blogElement = document.getElementById("pegasus-blog");
-      if (blogElement) {
-        var blogColor = blogElement.getAttribute("data-pegasus-blog-color");
-        if (blogColor) {
-          document.documentElement.style.setProperty("--pegasus-blog-primary-color", blogColor);
-        }
-      }';
-		wp_add_inline_script('pegasus-blog-plugin-js', $inline_script);
-	}
-	add_action('wp_enqueue_scripts', 'pegasus_blog_add_inline_script');
 
 	/*~~~~~~~~~~~~~~~~~~~~
 		BLOG
@@ -262,13 +251,16 @@ Domain Path: /languages
 			return chr( $matches[1] );
 		}, $the_query);
 
+		//escape &amp; in the_query
+		$the_query = str_replace('&amp;', '&', $the_query);
+
 		$query_args = array(
 			'post_type' => 'post', // Ensure you are querying the correct post type
 			'posts_per_page' => -1, // Set the number of posts to retrieve
 			//'post_status' => 'publish', // Ensure only published posts are retrieved
 			//'category_name' => 'your-category-slug', // Optional: Filter by category
-			'orderby' => 'date', // Optional: Order by date
-			'order' => 'ASC' // Optional: Order descending
+			//'orderby' => 'title', // Optional: Order by date
+			//'order' => 'DESC' // Optional: Order descending
 		);
 
 		// echo '<pre>';
@@ -299,7 +291,11 @@ Domain Path: /languages
 		$the_id = '';
 
 		global $post;
-		//global $query_string;
+		global $pegasus_blog_index_value;
+
+		if ( ! isset( $pegasus_blog_index_value ) || empty( $pegasus_blog_index_value ) || null === $pegasus_blog_index_value ) {
+			$pegasus_blog_index_value = 0;
+		}
 
 		//var_dump($color);
 		//var_dump($pegasus_blogs_color);
@@ -355,8 +351,37 @@ Domain Path: /languages
 
 			// output all findings - CUSTOMIZE TO YOUR LIKING
 			$output = '';
+
+			$output .= '<style>
+
+			    .pegasus-blog-switcher-' . $pegasus_blog_index_value .' #blog-categories li a,
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' .pegasus-blog-options a:hover,
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' .pegasus-blog-options a.pegasus-blog-selected,
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' .pegasus-blog-title {
+					color: ' . $pegasus_blogs_color .  ';
+				}
+
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' #blog-categories li a,
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .'  {
+					border: 3px solid ' . $pegasus_blogs_color .  ';
+				}
+
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' .pegasus-blog-options {
+					border-bottom: 3px solid ' . $pegasus_blogs_color .  ';
+				}
+
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' .pegasus-blog-add {
+					background: ' . $pegasus_blogs_color .  ';
+				}
+
+				.pegasus-blog-switcher-' . $pegasus_blog_index_value .' .pegasus-blog-add:hover {
+					background: ' . $pegasus_blogs_color .  ';
+				}
+			</style>
+			';
+
 			//$output .= '<!--PEGASUS BLOG SYSTEM-->';
-			$output .= '<div id="pegasus-blog" class="pegasus-blog-switcher pegasus-blog-view-grid" data-pegasus-blog-color="' . esc_attr($pegasus_blogs_color) . '">';
+			$output .= '<div id="pegasus-blog" class="pegasus-blog-switcher  pegasus-blog-switcher-' . $pegasus_blog_index_value . '  pegasus-blog-view-grid" data-pegasus-blog-color="' . esc_attr($pegasus_blogs_color) . '"  >';
 			$output .= '<div class="pegasus-blog-options">';
 			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-grid pegasus-blog-selected" data-view="pegasus-blog-view-grid">Grid View</a>';
 			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-list" data-view="pegasus-blog-view-list">List View</a>';
@@ -418,11 +443,14 @@ Domain Path: /languages
 							//$output = '<div class="clearfix"></div>';
 						$output .= '</article>';
 					$output .= '</li>';
+
 				}//end while
+
 				wp_reset_postdata();
 			} else {
 				echo '<p>No posts found.</p>';
 			}
+
 
 			$output .= '</ul>';
 			$output .= '</div>';
@@ -431,19 +459,14 @@ Domain Path: /languages
 
 		wp_enqueue_style( 'blog-plugin-css' );
 		wp_enqueue_script( 'classie-js' );
-		wp_enqueue_script( 'pegasus-blog-plugin-js' );
+		wp_enqueue_script( 'pegasus-blog-plugin' );
+
+		$pegasus_blog_index_value++;
+
 
 		return $output;
 
 	}
 	add_shortcode( 'blog', 'pegasus_blog_func' );
 
-	// function pegasus_blog_custom_css() {
-	// 	global $pegasus_blogs_color;
-	// 	var_dump( $pegasus_blogs_color );
-	// 	if ($pegasus_blogs_color) {
-	// 		echo '<style>:root { --pegasus-blog-custom-color: ' . esc_attr($pegasus_blogs_color) . '; }</style>';
-	// 	}
-	// }
 
-	// add_action('wp_head', 'pegasus_blog_custom_css');
