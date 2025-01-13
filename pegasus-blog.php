@@ -218,8 +218,32 @@ Domain Path: /languages
 		wp_register_script( 'classie-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/classie.js', array( 'jquery' ), null, 'all' );
 		wp_register_script( 'pegasus-blog-plugin', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/pegasus-blog-plugin.js', array( 'jquery' ), null, 'all' );
 
+		if (
+			false === wp_style_is('bootstrap-style', 'enqueued') &&
+			false === wp_style_is('bootstrap-style', 'registered') &&
+			false === wp_style_is('bootstrap-style', 'done') &&
+			false === wp_style_is('bootstrap-style', 'to_do')
+		) {
+			add_filter('body_class', function($classes) {
+				$classes[] = 'no-bootstrap';
+				return $classes;
+			});
+		}
+
+		if (blog_check_main_theme_name() == 'Pegasus' || blog_check_main_theme_name() == 'Pegasus Child') {
+			add_filter('body_class', function($classes) {
+				$key = array_search('no-bootstrap', $classes);
+				if ($key !== false) {
+					unset($classes[$key]);
+				}
+				return $classes;
+			});
+		}
+
 	} //end function
 	add_action( 'wp_enqueue_scripts', 'pegasus_blog_plugin_js' );
+
+
 
 	/*~~~~~~~~~~~~~~~~~~~~
 		BLOG
@@ -383,8 +407,8 @@ Domain Path: /languages
 			//$output .= '<!--PEGASUS BLOG SYSTEM-->';
 			$output .= '<div id="pegasus-blog" class="pegasus-blog-switcher  pegasus-blog-switcher-' . $pegasus_blog_index_value . '  pegasus-blog-view-grid" data-pegasus-blog-color="' . esc_attr($pegasus_blogs_color) . '"  >';
 			$output .= '<div class="pegasus-blog-options">';
-			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-grid pegasus-blog-selected" data-view="pegasus-blog-view-grid">Grid View</a>';
-			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-list" data-view="pegasus-blog-view-list">List View</a>';
+			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-grid pegasus-blog-selected" data-view="pegasus-blog-view-grid">Grid</a>';
+			$output .= '<a href="#" class="pegasus-blog-icon pegasus-blog-list" data-view="pegasus-blog-view-list">List</a>';
 			$output .= '</div>';
 			$output .= '<ul id="blog-list" >';
 

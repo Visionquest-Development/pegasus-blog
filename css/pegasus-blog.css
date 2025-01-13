@@ -147,6 +147,17 @@
     content: "\f055";
   }
 
+  body.no-bootstrap .pegasus-blog-options a:before { display: none; }
+
+  /*
+  body.no-bootstrap .pegasus-blog-grid:before {
+    content: "Grid View";
+  }
+
+  body.no-bootstrap .pegasus-blog-list:before {
+    content: "List View";
+  } */
+
   /* Individual view mode styles */
 
   /* Large grid view */
