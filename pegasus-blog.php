@@ -215,7 +215,7 @@ Domain Path: /languages
 	*/
 	function pegasus_blog_plugin_js() {
 
-		wp_register_script( 'classie-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/classie.js', array( 'jquery' ), null, 'all' );
+		wp_register_script( 'classie-js', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/classie.js', array( 'jquery' ), '1.0.1', true );
 		wp_register_script( 'pegasus-blog-plugin', trailingslashit( plugin_dir_url( __FILE__ ) ) . 'js/pegasus-blog-plugin.js', array( 'jquery' ), null, 'all' );
 
 		if (
